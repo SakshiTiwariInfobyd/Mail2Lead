@@ -1,22 +1,31 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="AdminTool.Site" %>
-
-
-<!DOCTYPE html>
-
 <html lang="en">
-<head id="Head1" runat="server">
-    <meta charset="utf-8" />
-    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mail To Lead Automation</title>
-    <link href="Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="Content/bootstrap.css" rel="stylesheet" />-->
-    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
-    </asp:ContentPlaceHolder>
-    <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <link href="Content/Site.css" rel="stylesheet" />
-    
-</head>
-<body>
+    <head id="Head1" runat="server">
+        <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+        </asp:ContentPlaceHolder>
+        <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <link href="Content/Site.css" rel="stylesheet" />
+        <!-- Bootstrap css-->
+	    <link rel="stylesheet" href="css-js/vendor/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css-js/css/style.css" />
+        <style>
+            footer{
+                position:fixed;
+                bottom:0px;
+                left:0px;
+                right:0px;
+                height:50px;
+                margin-bottom:5px;
+            }
+            #lblUserName{
+                margin-right:20px;
+            }
+            #lblLogout{
+                text-transform:none;
+            }
+        </style>
+    </head>
+    <body>
     <form id="Form1" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server">
             <Scripts>
@@ -33,26 +42,19 @@
             </Scripts>
         </asp:ScriptManager>
         
-        <!--test code-->
-            <!-- Bootstrap css-->
-	        <link rel="stylesheet" href="css-js/vendor/bootstrap/css/bootstrap.css">
-            <link rel="stylesheet" type="text/css" href="css-js/css/style.css" />
-	        
-	        
-        <div class="main"> 
-       
-			<header  class="header-part">
+	    <div class="main"> 
+            <header  class="header-part">
 				<div id="home" class="wrapper"> 
 					<!-- Fixed navbar -->
 					<div class="navi navbar-default" role="navigation">
 						<div class="container">
 					  		<div class="navbar-header page-scroll"> 
-								<a class="navbar-brand" href="http://infobyd.com/"><img src="images/logo-infobyd.png" alt="TechGut" style="position:relative; bottom:20px;"></a> 
+								<a class="navbar-brand" href="http://infobyd.com/"><img src="images/logo-infobyd.png" alt="Infobyd" style="position:relative; bottom:20px;"></a> 
 							</div>
 					  		<div id="navbar" class="navbar-collapse collapse pull-right hidden-xs">
-								<ul class="nav navbar-nav navbar-right">
+								<ul class="nav navbar-nav navbar-right" id="text-case">
                                     <li> <asp:Label runat="server" ID="lblUserName" Text="USERNAME">USERNAME</asp:Label></li>
-									<li><a href="default.aspx"><asp:Label runat="server" ID="lblLogout" Text="LOGOUT">LOGOUT</asp:Label></a></li>
+									<li> <a href="default.aspx"><asp:Label runat="server" ID="lblLogout" Text="Logout">Logout</asp:Label></a></li>
 							  	</ul>
 							</div>
 							<!--/.nav-collapse --> 
@@ -87,23 +89,23 @@
         
         <!--end form -->
         
-<!-- footer -->
-<footer>
-<div class="footer-bottom">
-<div class="container">
-<div class="row">
-<div class="wow zoomIn col-xs-12">
-<p>© 2015 All rights reserved. <a href="http://infobyd.com/" target="_blank">infobyd.com</a></p>
-</div>
-<!-- /.col-xs-12 --> 
-</div>
-<!-- /.row --> 
-</div>
-<!-- /.container --> 
-</div>
-<!-- /.creditwrapper --> 
-</footer>
-<!-- /Footer --> 
+        <!-- footer -->
+        <footer>
+            <div class="footer-bottom">
+            <div class="container">
+            <div class="row">
+            <div class="col-xs-12">
+            <p>© 2015 All rights reserved. <a href="http://infobyd.com/" target="_blank">infobyd.com</a></p>
+            </div>
+            <!-- /.col-xs-12 --> 
+            </div>
+            <!-- /.row --> 
+            </div>
+            <!-- /.container --> 
+            </div>
+            <!-- /.creditwrapper --> 
+        </footer>
+        <!-- /Footer --> 
 
 <!-- jQuery JS --> 
 <script data-cfasync="false" src="css-js/js/jquery-1.11.1.js"></script> 
@@ -131,25 +133,6 @@
 <!-- Custom Script JS --> 
 <script data-cfasync="false" src="css-js/js/script.js"></script> 
 
-        <!--end test code-->
-
-        <!--<div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" runat="server">Mail to Lead Automation</a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/frmUserList.aspx">Home</a></li>
-                        <li><a runat="server" href="http://infobyd.com#about">About</a></li>
-                        <li><a runat="server" href="http://infobyd.com#contact">Contact</a></li>
-                    </ul>-->
-        
-    </form>
+        </form>
 </body>
 </html>

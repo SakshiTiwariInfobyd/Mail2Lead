@@ -63,6 +63,7 @@ namespace AdminTool.Model
                                 else
                                     dtEmailTime = DateTime.Now;
 
+                                
                                 dtLastProcessed = dtEmailTime;
 
                                 sMailContent = HelperClass.StripHTML(sMailContent);  //remove html tags form content

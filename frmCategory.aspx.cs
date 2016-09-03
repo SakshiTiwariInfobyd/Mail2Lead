@@ -37,6 +37,7 @@ namespace AdminTool
                     {
                         Response.Redirect("~/default.aspx");
                     }
+                    ((Label)(Master).FindControl("lblUserName")).Text = Session["UserName"].ToString();
 
                 }
                 catch (Exception ex)
@@ -52,7 +53,7 @@ namespace AdminTool
                 Session["CategoryType"] = 1;
                 if (UserType < 2)
                 {
-                    Response.Redirect("~/frmUserDetailViewScreen.aspx");
+                    Response.Redirect("~/frmApiReport.aspx");
                 }
                 else
                 {

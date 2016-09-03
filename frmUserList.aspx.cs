@@ -9,6 +9,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Text;
 
 
 namespace AdminTool
@@ -37,6 +38,7 @@ namespace AdminTool
                     {
                         GetAllUserList(LoggedInuserId);
                     }
+                    ((Label)(Master).FindControl("lblUserName")).Text = Session["UserName"].ToString();
                 }
                 catch (Exception exc)
                 {
@@ -302,6 +304,57 @@ namespace AdminTool
         {
             try
             {
+                StringBuilder sb = new StringBuilder();
+                string FileName = "UserList";
+                DataTable dt = GetDataTable();
+                GridView GridView1 = new GridView();
+
+                HttpContext.Current.Response.Clear();
+                HttpContext.Current.Response.ClearContent();
+                HttpContext.Current.Response.ClearHeaders();
+                HttpContext.Current.Response.Buffer = true;
+                HttpContext.Current.Response.ContentType = "application/ms-excel";
+                HttpContext.Current.Response.Write(@"<!DOCTYPE HTML PUBLIC ""-//W3C//DTD HTML 4.0 Transitional//EN"">");
+                HttpContext.Current.Response.AddHeader("Content-Disposition", "attachment;filename=" + FileName + ".xls");
+
+                HttpContext.Current.Response.Charset = "utf-8";
+                HttpContext.Current.Response.ContentEncoding = System.Text.Encoding.GetEncoding("windows-1250");
+                //sets font
+                HttpContext.Current.Response.Write("<font style='font-size:10.0pt; font-family:Calibri;'>");
+                HttpContext.Current.Response.Write("<BR><BR><BR>");
+                //sets the table border, cell spacing, border color, font of the text, background, foreground, font height
+                HttpContext.Current.Response.Write("<Table border='1' bgColor='#ffffff' " +
+                  "borderColor='#000000' cellSpacing='0' cellPadding='0' " +
+                  "style='font-size:10.0pt; font-family:Calibri; background:lightblue;'> <TR>");
+                //am getting my grid's column headers
+                int columnscount = GridView1.Columns.Count;
+
+                for (int j = 0; j < columnscount; j++)
+                {      //write in new column
+                    HttpContext.Current.Response.Write("<Td>");
+                    //Get column headers  and make it as bold in excel columns
+                    HttpContext.Current.Response.Write("<B>");
+                    HttpContext.Current.Response.Write(GridView1.Columns[j].HeaderText.ToString());
+                    HttpContext.Current.Response.Write("</B>");
+                    HttpContext.Current.Response.Write("</Td>");
+                }
+                HttpContext.Current.Response.Write("</TR>");
+                foreach (DataRow row in dt.Rows)
+                {//write in new row
+                    HttpContext.Current.Response.Write("<TR>");
+                    for (int i = 0; i < dt.Columns.Count; i++)
+                    {
+                        HttpContext.Current.Response.Write("<Td>");
+                        HttpContext.Current.Response.Write(row[i].ToString());
+                        HttpContext.Current.Response.Write("</Td>");
+                    }
+
+                    HttpContext.Current.Response.Write("</TR>");
+                }
+                HttpContext.Current.Response.Write("</Table>");
+                HttpContext.Current.Response.Write("</font>");
+                HttpContext.Current.Response.Flush();
+                HttpContext.Current.Response.End();
 
             }
             catch (Exception ex)
@@ -316,43 +369,32 @@ namespace AdminTool
         {
             try
             {
-                string name = "Report.csv";
-                GridUserDetails.AllowPaging = false;
-                DataTable dt1 = new DataTable("GridView_Data");
-                System.Text.StringBuilder sb = new System.Text.StringBuilder();
-                foreach (TableCell cell in GridUserDetails.HeaderRow.Cells)
-                {
-                    if (!cell.Text.Equals("&nbsp;"))
-                    {
-                        dt1.Columns.Add(cell.Text.Trim());
-                        sb.Append(cell.Text.Trim() + ',');
-                    }
-                }
-                sb.Append("\r\n");
+                StringBuilder sb = new StringBuilder();
+                string FileName = "UserList";
+                DataTable dt = GetDataTable();
+                GridView GridView1 = new GridView();
 
-                foreach (GridViewRow row in GridUserDetails.Rows)
+                GridView1.AllowPaging = false;
+                GridView1.DataSource = dt;
+                GridView1.DataBind();
+                GridView1.HeaderRow.BackColor = System.Drawing.Color.LightBlue;
+
+                foreach (TableCell cell in GridView1.HeaderRow.Cells)
                 {
-                    dt1.Rows.Add();
-                    for (int i = 0; i < row.Cells.Count; i++)
-                    {
-                        if (!GridUserDetails.HeaderRow.Cells[i].Text.Trim().Equals("&nbsp;"))
-                            {
-                            string str = System.Net.WebUtility.HtmlDecode(row.Cells[i].Text);
-                            dt1.Rows[dt1.Rows.Count - 1][i] = str;
-                        }
-                    }
+                     sb.Append(cell.Text.Trim() + ',');
                 }
+                sb.Append("\r\n");                
 
                 Response.Clear();
                 Response.Buffer = true;
                 Response.Charset = "";
                 Response.ContentType = "application/text";
-                Response.AddHeader("content-disposition", "attachment;filename=" + name);
-                for (int i = 0; i < dt1.Rows.Count; i++)
+                Response.AddHeader("content-disposition", "attachment;filename=" + FileName+".csv");
+                for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    for (int j = 0; j < dt1.Columns.Count; j++)
+                    for (int j = 0; j < dt.Columns.Count; j++)
                     {
-                        sb.Append(Convert.ToString(dt1.Rows[i][j]) + ',');
+                        sb.Append(Convert.ToString(dt.Rows[i][j]) + ',');
                     }
                     sb.Append("\r\n");
                 }
@@ -374,22 +416,31 @@ namespace AdminTool
         {
             try
             {
-                string name = "Report.pdf";
-                GridUserDetails.AllowPaging = false;
+
+                string FileName = "UserList";
+                DataTable dt = GetDataTable();
+                GridView GridView1 = new GridView();
+
+                GridView1.AllowPaging = false;
+                GridView1.DataSource = dt;
+                GridView1.DataBind();
+                GridView1.HeaderRow.BackColor = System.Drawing.Color.LightBlue;
+
                 Response.ContentType = "application/pdf";
-                Response.AddHeader("content-disposition", "attachment;filename=" + name);
+                Response.AddHeader("content-disposition", "attachment;filename=" + FileName + ".pdf");
+
                 Response.Cache.SetCacheability(HttpCacheability.NoCache);
                 StringWriter sw = new StringWriter();
                 HtmlTextWriter hw = new HtmlTextWriter(sw);
-                GridUserDetails.RenderControl(hw);
+                GridView1.RenderControl(hw);
                 StringReader sr = new StringReader(sw.ToString());
-                Document doc = new Document(PageSize.A2, 7f, 7f, 7f, 0f);
-                HTMLWorker htmlParser = new HTMLWorker(doc);
-                PdfWriter.GetInstance(doc, Response.OutputStream);
-                doc.Open();
-                htmlParser.Parse(sr);
-                doc.Close();
-                Response.Write(doc);
+                Document pdfDoc = new Document(PageSize.A4, 10f, 10f, 10f, 0f);
+                HTMLWorker htmlparser = new HTMLWorker(pdfDoc);
+                PdfWriter.GetInstance(pdfDoc, Response.OutputStream);
+                pdfDoc.Open();
+                htmlparser.Parse(sr);
+                pdfDoc.Close();
+                Response.Write(pdfDoc);
                 Response.End();
             }
             catch (Exception ex)
@@ -398,6 +449,22 @@ namespace AdminTool
                 lblMsg.Style.Add("color", "Red");
                 lblMsg.Style.Add("display", "block");
             }
+        }
+
+        DataTable GetDataTable()
+        {
+            DataTable dt = (System.Data.DataTable)ViewState["DefaultDataTable"];
+            dt.Columns.Remove("id");
+            dt.Columns.Remove("creatorId");
+            dt.Columns.Remove("type");
+            dt.Columns.Remove("profileImage");
+            dt.Columns.Remove("password");
+            dt.Columns.Remove("apiLimit");
+            dt.Columns.Remove("isActive");
+            dt.Columns.Remove("isApproved");
+            dt.Columns.Remove("creationDate");
+            dt.Columns.Remove("modificationDate");
+            return dt;
         }
 
         protected void imgBtnUserDetail_Click(object sender, ImageClickEventArgs e)
@@ -412,5 +479,7 @@ namespace AdminTool
         {
             Response.Redirect("~/frmUserDetailViewScreen.aspx");
         }
+
+
     }
 }

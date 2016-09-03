@@ -72,10 +72,7 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.IO, Version=2.6.8.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Bcl.1.1.8\lib\net40\System.IO.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
+  
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -178,10 +175,10 @@
     <Content Include="css-js\vendor\rs-plugin\js\jquery.themepunch.revolution.min.js" />
     <Content Include="default.aspx" />
     <Content Include="favicon.ico" />
+    <Content Include="frmApiReport.aspx" />
     <Content Include="frmCategory.aspx" />
     <Content Include="frmMailContentSplitInfo.aspx" />
     <Content Include="frmManageITest.aspx" />
-    <Content Include="frmPricingList.aspx" />
     <Content Include="frmRequestForDemo.aspx" />
     <Content Include="frmUserDetailViewScreen.aspx" />
     <Content Include="frmUserList.aspx" />
@@ -200,6 +197,7 @@
     <Content Include="Images\goBack.png" />
     <Content Include="Images\indian-rupee-symbol.png" />
     <Content Include="Images\logo-infobyd.png" />
+    <Content Include="Images\more-128.png" />
     <Content Include="Images\save.png" />
     <Content Include="Images\search_User.png" />
     <Content Include="Images\view_userDetail.png" />
@@ -324,6 +322,13 @@
     <Compile Include="About.aspx.designer.cs">
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
+    <Compile Include="frmApiReport.aspx.cs">
+      <DependentUpon>frmApiReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmApiReport.aspx.designer.cs">
+      <DependentUpon>frmApiReport.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SMSService\Action.cs" />
     <Compile Include="SMSService\RingCentral.cs" />
     <Compile Include="SMSService\Zoho.cs" />
@@ -366,13 +371,6 @@
     </Compile>
     <Compile Include="frmManageITest.aspx.designer.cs">
       <DependentUpon>frmManageITest.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="frmPricingList.aspx.cs">
-      <DependentUpon>frmPricingList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="frmPricingList.aspx.designer.cs">
-      <DependentUpon>frmPricingList.aspx</DependentUpon>
     </Compile>
     <Compile Include="frmRequestForDemo.aspx.cs">
       <DependentUpon>frmRequestForDemo.aspx</DependentUpon>
@@ -468,11 +466,7 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
-  <Import Project="packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
-  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
-    <Error Condition="!Exists('packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
-    <Error Condition="Exists('packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
-  </Target>
+
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

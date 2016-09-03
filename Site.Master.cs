@@ -11,9 +11,10 @@ namespace AdminTool
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (string.IsNullOrEmpty(Session["UserName"].ToString()))
-            //{ 
-            //}
+           if (string.IsNullOrEmpty(Session["UserName"].ToString()))
+            {
+                lblUserName.Text = Session["UserName"].ToString();
+            }
         }
     }
 }

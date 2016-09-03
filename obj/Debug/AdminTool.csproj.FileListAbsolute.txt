@@ -71,3 +71,10 @@ C:\Users\bc\Documents\GitHub\Mail2Lead\Mail2Lead\obj\Debug\AdminTool.csproj.App.
 C:\Users\bc\Documents\GitHub\Mail2Lead\Mail2Lead\obj\Debug\AdminTool.csprojResolveAssemblyReference.cache
 C:\Users\bc\Documents\GitHub\Mail2Lead\Mail2Lead\obj\Debug\AdminTool.dll
 C:\Users\bc\Documents\GitHub\Mail2Lead\Mail2Lead\obj\Debug\AdminTool.pdb
+C:\Users\bc\Documents\GitHub\M2L\Mail2Lead\bin\AdminTool.dll
+C:\Users\bc\Documents\GitHub\M2L\Mail2Lead\bin\AdminTool.pdb
+C:\Users\bc\Documents\GitHub\M2L\Mail2Lead\bin\MySql.Data.dll
+C:\Users\bc\Documents\GitHub\M2L\Mail2Lead\bin\MySql.Data.xml
+C:\Users\bc\Documents\GitHub\M2L\Mail2Lead\obj\Debug\AdminTool.dll
+C:\Users\bc\Documents\GitHub\M2L\Mail2Lead\obj\Debug\AdminTool.pdb
+C:\Users\bc\Documents\GitHub\M2L\Mail2Lead\obj\Debug\AdminTool.csprojResolveAssemblyReference.cache

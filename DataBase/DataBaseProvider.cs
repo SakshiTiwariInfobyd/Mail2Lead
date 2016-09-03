@@ -144,6 +144,26 @@ namespace AdminTool.DataBase
             }
             return dt;
         }
+        public DataTable getApiStatusReport(int UserId)
+        {
+
+            DataTable dt = new DataTable();
+            using (MySqlConnection con = new MySqlConnection(myConnectionString))
+            {
+                using (MySqlCommand cmd = new MySqlCommand("sp_get_api_status_report", con))
+                {
+
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    //cmd.Parameters.AddWithValue("sUserid", UserId);
+                    cmd.Parameters.Add("sUserid", MySqlDbType.VarChar).Value = UserId;
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                    da.Fill(dt);
+
+                }
+            }
+        return dt;
+        
+        }
 
         public DataTable getListOfAllUserSubject(int UserId)
         {

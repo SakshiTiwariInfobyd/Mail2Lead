@@ -22,6 +22,10 @@
             .ListHeaderGrid th {
                 padding-left: 15px;
             }
+    .style1
+    {
+        height: 55px;
+    }
     </style>
     <script type="text/javascript">
 
@@ -80,10 +84,10 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>
+                    <td class="style1">
                         <asp:Label ID="lblMsg" runat="server" Text="" ForeColor="Red"></asp:Label>
                     </td>
-                    <td colspan="2" align="right">
+                    <td colspan="2" align="right" class="style1">
                         <div id="DivExport" runat="server">
                             <asp:Button runat="server" ID="ImgAddNewUser" Text="Add New User" OnClick="ImgAddNewUser_Click1" CssClass="btn" EnableViewState="false" Width="125" CausesValidation="true" ValidationGroup="Group1" />
                             <asp:Button runat="server" ID="ImgExportToExcel" Text="Export EXCEL" OnClick="ImgExportToExcel_Click" CssClass="btn" EnableViewState="false" Width="125" CausesValidation="true" ValidationGroup="Group1" />
@@ -96,10 +100,24 @@
                 <tr>
                     <td colspan="3">
                         <br />
+
+                        <script type="text/javascript">
+                            function confirmation() {
+                                if (confirm('are you sure you want to delete ?')) {
+                                    return true;
+                                } else {
+                                    return false;
+                                }
+                            }
+                       </script>
                         <div id="GroupDetails" runat="server" width="100%">
-                            <asp:GridView ID="GridUserDetails" runat="server" Width="100%" AllowPaging="True" OnPageIndexChanging="GridUserDetails_PageIndexChanging" AutoGenerateColumns="False" GridLines="None" DataKeyNames="Id" OnRowEditing="GridUserDetails_RowEditing"
-                                OnRowDeleting="GridUserDetails_RowDeleting" OnRowCancelingEdit="GridUserDetails_RowCancelingEdit" OnRowUpdating="GridUserDetails_RowUpdating"
-                                OnRowDataBound="GridUserDetails_RowDataBound">
+                            <asp:GridView ID="GridUserDetails" runat="server" Width="101%" 
+                                AllowPaging="True" OnPageIndexChanging="GridUserDetails_PageIndexChanging" 
+                                AutoGenerateColumns="False" GridLines="None" DataKeyNames="Id" OnRowEditing="GridUserDetails_RowEditing"
+                                OnRowDeleting="GridUserDetails_RowDeleting" 
+                                OnRowCancelingEdit="GridUserDetails_RowCancelingEdit" OnRowUpdating="GridUserDetails_RowUpdating"
+                                OnRowDataBound="GridUserDetails_RowDataBound"> 
+                              
                                 <HeaderStyle CssClass="ListHeaderGrid" HorizontalAlign="Left" />
                                 <RowStyle CssClass="ListRowGrid" />
                                 <PagerStyle BackColor="PaleGoldenrod" ForeColor="DarkSlateBlue" Height="40" HorizontalAlign="Center" />
@@ -183,13 +201,18 @@
                                     </asp:TemplateField>
 
                                     <asp:CommandField ButtonType="Image" EditImageUrl="~/Images/edit.png" CancelImageUrl="~/Images/cancel_new.png"
-                                        DeleteImageUrl="~/Images/delete.png" UpdateImageUrl="~/Images/save.png" ShowCancelButton="true" ShowDeleteButton="true"
-                                        ShowEditButton="true" ItemStyle-Width="50" ItemStyle-HorizontalAlign="Right">
+                                        DeleteImageUrl="~/Images/delete.png" UpdateImageUrl="~/Images/save.png" ShowCancelButton="true"
+                                        ShowEditButton="true"  ItemStyle-Width="50" 
+                                        ItemStyle-HorizontalAlign="Right">
                                         <ItemStyle HorizontalAlign="Right" Width="100px"></ItemStyle>
                                     </asp:CommandField>
 
                                     <asp:TemplateField>
+                                        <HeaderTemplate>
+                                            Action
+                                        </HeaderTemplate>
                                         <ItemTemplate>
+                                            <asp:ImageButton ID="imgBtnDelete" runat="server" OnClick="imgBtnDelete_Click" OnClientClick="return confirmation();" CommandArgument='<%# Eval("Id") %>' ImageUrl="~/Images/delete.png" />
                                             <asp:ImageButton ID="imgBtnUserDetail" runat="server" OnClick="imgBtnUserDetail_Click" OnClientClick="return ConfirmAction(this);" CommandArgument='<%# Eval("Id") %>' ImageUrl="~/Images/view_userDetail.png" />
                                         </ItemTemplate>
                                     </asp:TemplateField>

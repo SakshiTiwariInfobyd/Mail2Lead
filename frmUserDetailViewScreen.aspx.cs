@@ -19,6 +19,9 @@ namespace AdminTool
             //Session["LoggedInuserId"] = 1;
             //Session["ViewUserId"] = 5;
             //Session["ViewUserSubjectId"] = 12;
+          //  lblUserName.Text = Session["username"].ToString;
+           // ButtonGoBack.Visible = true;
+           
             if (!IsPostBack)
             {
                 try
@@ -34,6 +37,7 @@ namespace AdminTool
                     {
                         SetUserInfoIntoForm(UserId);
                     }
+                    ((Label)(Master).FindControl("lblUserName")).Text = Session["UserName"].ToString();
                 }
                 catch (Exception ex)
                 { }
@@ -65,6 +69,7 @@ namespace AdminTool
                 tbLastName.Text = "";
                 tbEmail.Text = "";
                 tbConfigurationToken.Text = "";
+                
                 EnableDisable(true);
 
             }
