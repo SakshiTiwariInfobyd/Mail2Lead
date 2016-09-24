@@ -7,18 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AdminTool {
+namespace AdminTool.Checkout {
     
     
-    public partial class frmRequestForDemo {
+    public partial class CheckoutComplete {
         
         /// <summary>
-        /// lblHeader control.
+        /// TransactionId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblHeader;
+        protected global::System.Web.UI.WebControls.Label TransactionId;
+        
+        /// <summary>
+        /// Continue control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Continue;
     }
 }

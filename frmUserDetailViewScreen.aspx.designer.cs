@@ -13,6 +13,15 @@ namespace AdminTool {
     public partial class frmUserDetailViewScreen {
         
         /// <summary>
+        /// ImageGoBack1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ImageGoBack1;
+        
+        /// <summary>
         /// lblHeader control.
         /// </summary>
         /// <remarks>
@@ -20,15 +29,6 @@ namespace AdminTool {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblHeader;
-        
-        /// <summary>
-        /// ButtonGoBack control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonGoBack;
         
         /// <summary>
         /// DivExport control.
@@ -65,15 +65,6 @@ namespace AdminTool {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ImgSync;
-        
-        /// <summary>
-        /// ImgViewUserReport control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ImgViewUserReport;
         
         /// <summary>
         /// lblMsg control.

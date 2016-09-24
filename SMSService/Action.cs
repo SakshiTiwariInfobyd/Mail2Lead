@@ -274,7 +274,7 @@ namespace AdminTool.SMSService
             {
                 zoho.AuthToken = UserInfo.Rows[0]["configurationAuthToken"].ToString();
             }
-           
+
             while (true)
             {
                 try
@@ -340,7 +340,7 @@ namespace AdminTool.SMSService
                             if (GetCurrentDateTime().Subtract(CreateDT).TotalMinutes > nExpireTime)
                             {
                                 Console.WriteLine("Info:" + DateTime.Now.ToString("yyyyMMddHHmmss") + ":\tRC\t\tSMS ID " + SMSId + " expired.");
-                                databaseProvider.UpdateSMSStatus(SMSId,"Expire");
+                                databaseProvider.UpdateSMSStatus(SMSId, "Expire");
                                 zoho.UpdateStatus(SMSId, Zoho.MessageStatus.Failed);
                                 continue;
                             }

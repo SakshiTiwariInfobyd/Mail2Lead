@@ -19,9 +19,6 @@ namespace AdminTool
         static DataBaseProvider dataBaseProvider = new DataBaseProvider();
         protected void Page_Load(object sender, EventArgs e)
         {
-            /* Session["LoggedInuserId"] = 1;
-             Session["ViewUserId"] = 5;
-             Session["ViewUserSubjectId"] = 12;*/
 
             lblMsg.Style.Remove("color");
             lblMsg.Text = "";
@@ -50,7 +47,16 @@ namespace AdminTool
 
         public void GetAllUserList(int UserId)
         {
-            DataTable dt = dataBaseProvider.getListOfallUser(UserId);
+            int categoryType = Convert.ToInt32(Session["CategoryType"].ToString());
+            DataTable dt = new DataTable();
+            if (categoryType == 1)
+            {
+                dt = dataBaseProvider.getListOfallUser(UserId);
+            }
+            else if (categoryType == 2)
+            {
+                dt = dataBaseProvider.getListOfallSMSUser(UserId);
+            }
             ViewState["DefaultDataTable"] = dt;
             if (dt.Rows.Count < 1)
             {
@@ -143,8 +149,16 @@ namespace AdminTool
         {
             int LoggedInuserId;
             LoggedInuserId = Convert.ToInt32(Session["LoggedInuserId"]);
+            int categoryType = Convert.ToInt32(Session["CategoryType"].ToString());
             DataTable dt = new DataTable();
-            dt = dataBaseProvider.getListOfallUser(LoggedInuserId);
+            if (categoryType == 1)
+            {
+                dt = dataBaseProvider.getListOfallUser(LoggedInuserId);
+            }
+            else if (categoryType == 2)
+            {
+                dt = dataBaseProvider.getListOfallSMSUser(LoggedInuserId);
+            }
             ViewState["DefaultDataTable"] = dt;
 
             if (!string.IsNullOrEmpty(hdnSearchTxt.Value))
@@ -248,6 +262,7 @@ namespace AdminTool
                     lblMsg.Text = "Some Error Occured";
                     lblMsg.ForeColor = System.Drawing.Color.Red;
                 }
+                
 
             }
             catch (Exception ex)
@@ -381,15 +396,15 @@ namespace AdminTool
 
                 foreach (TableCell cell in GridView1.HeaderRow.Cells)
                 {
-                     sb.Append(cell.Text.Trim() + ',');
+                    sb.Append(cell.Text.Trim() + ',');
                 }
-                sb.Append("\r\n");                
+                sb.Append("\r\n");
 
                 Response.Clear();
                 Response.Buffer = true;
                 Response.Charset = "";
                 Response.ContentType = "application/text";
-                Response.AddHeader("content-disposition", "attachment;filename=" + FileName+".csv");
+                Response.AddHeader("content-disposition", "attachment;filename=" + FileName + ".csv");
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     for (int j = 0; j < dt.Columns.Count; j++)
@@ -472,13 +487,39 @@ namespace AdminTool
             ImageButton img = sender as ImageButton;
             int userId = Convert.ToInt32(img.CommandArgument);
             Session["ViewUserId"] = userId;
-            Response.Redirect("~/frmUserDetailViewScreen.aspx");
+            int categoryType = Convert.ToInt32(Session["CategoryType"].ToString());
+            if (categoryType == 1)
+            {
+                Response.Redirect("~/frmApiReport.aspx");
+            }
+            else
+            {
+                Response.Redirect("~/frmUserDetailViewScreenSMS.aspx");
+            }
         }
 
         protected void ImgAddNewUser_Click1(object sender, EventArgs e)
         {
-            Response.Redirect("~/frmUserDetailViewScreen.aspx");
+            int categoryType = Convert.ToInt32(Session["CategoryType"].ToString());
+            if (categoryType == 1)
+            {
+                Response.Redirect("~/frmUserDetailViewScreen.aspx");
+            }
+            else
+            {
+                Response.Redirect("~/frmUserDetailViewScreenSMS.aspx");
+            }
         }
+
+        protected void ImageGoBack5_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("frmCategory.aspx");
+        }
+
+       
+
+        
+       
 
 
     }

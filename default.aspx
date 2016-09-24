@@ -23,8 +23,8 @@
         <link rel="stylesheet" type="text/css" href="css-js/css/slide_login_register.css">
     </head>
     <body>
-    <div class="main"> 
-			<header  class="header-part">
+        <div class="main">
+            <header class="header-part">
 				<div id="home" class="wrapper"> 
 					<!-- Fixed navbar -->
 					<div class="navi navbar-default" role="navigation">
@@ -64,16 +64,18 @@
 				  	<!-- End of Nav --> 
 				</div>
 			</header>
-		</div>
-		<!-- End of class="main" --> 
-
+        </div>
+        <!-- End of class="main" -->
         <div class="container" style="border-bottom: 1px solid #CCCCCC;">
             <div class="wow bounceInLeft" align="center">
                 <div class="col-sm-6" id="video">
                     <!--responsive video tag-->
-                    <h1>watch product video</h1><hr>
+                    <h1>
+                        watch product video</h1>
+                    <hr>
                     <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/D-SgoaHv3h8" frameborder="0" allowfullscreen></iframe>
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/D-SgoaHv3h8"
+                            frameborder="0" allowfullscreen></iframe>
                     </div>
                 </div>
                 <!--class="col-sm-12"-->
@@ -83,13 +85,15 @@
                 <div class="col-sm-6">
                     <div class="row" id="right-div-boder">
                         <div class="col-sm-5" id="right-div-head-login">
-                            <h2><span><a href="#" class="slidelink" id="showlogin">Login</a></span></h2>
+                            <h2>
+                                <span><a href="#" class="slidelink" id="showlogin">Login</a></span></h2>
                         </div>
                         <div class="col-sm-7" id="right-div-head-request">
-                            <h2><span><a href="#" class="leftsidelink" id="showregister">Request for demo</a></span></h2>
+                            <h2>
+                                <span><a href="#" class="leftsidelink" id="showregister">Request for demo</a></span></h2>
                         </div>
-                    </div><br>
-                   
+                    </div>
+                    <br>
                     <div class="row">
                         <div class="col-sm-12" align="center">
                             <div id="w">
@@ -99,23 +103,25 @@
                                             <form id="login" runat="server" name="login" action="default.aspx" method="post"
                                             siq_id="autopick_6887">
                                             <asp:TextBox runat="server" ID="UserName" class="txtfield" TabIndex="1" autocomplete="off"
-                                                    placeholder=" Username" />
-                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="UserName"
-                                                    CssClass="text-danger" ErrorMessage="required." Font-Size="10" />
-                                                <asp:TextBox runat="server" ID="Password" TextMode="Password" class="txtfield" TabIndex="1"
-                                                    autocomplete="off" placeholder="Password" />
-                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="Password"
-                                                    CssClass="text-danger" ErrorMessage="required." Font-Size="10" />
-                                                <br />
-                                                <asp:Label runat=server ID="ErrorMessage" Text="" Visible=true ForeColor=Red ></asp:Label>
-                                                <p align="right" style="margin:0 21% 10px 0;"><asp:Button runat="server" ID="LoginButton" OnClick="LoginButton_Click" UseSubmitBehavior="false" Text="Login" class="btn"/></p>
+                                                placeholder=" Username" />
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="UserName"
+                                                CssClass="text-danger" ErrorMessage="required." Font-Size="10" />
+                                            <asp:TextBox runat="server" ID="Password" TextMode="Password" class="txtfield" TabIndex="1"
+                                                autocomplete="off" placeholder="Password" />
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="Password"
+                                                CssClass="text-danger" ErrorMessage="required." Font-Size="10" />
+                                            <br />
+                                            <asp:Label runat="server" ID="ErrorMessage" Text="" Visible="true" ForeColor="Red"></asp:Label>
+                                            <p align="right" style="margin: 0 21% 10px 0;">
+                                                <asp:Button runat="server" ID="LoginButton" OnClick="LoginButton_Click" UseSubmitBehavior="false"
+                                                    Text="Login" class="btn" TabIndex="1" /></p>
                                             </form>
                                         </div>
                                     </div>
                                     <!-- /end #content-login -->
                                     <div id="content-register">
                                         <div class="content">
-                                            <iframe src="http://infobyd.com/form.php" style="height:500px; width:100%;"></iframe>
+                                            <iframe src="http://infobyd.com/form.php" style="height: 500px; width: 100%;"></iframe>
                                         </div>
                                     </div>
                                     <!-- /end #content-register -->
@@ -129,10 +135,10 @@
             </div>
             <!--class="col-sm-6"-->
         </div>
-    </div>
-    <!-- End of class="main" -->
-    <!--id="box"-->
-    <section class="testimmonial section-padding">
+        </div>
+        <!-- End of class="main" -->
+        <!--id="box"-->
+        <section class="testimmonial section-padding">
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-12 text-center">
@@ -163,9 +169,9 @@
 				</div>
 			</div>
 	  </section>
-    <!-- testimonial -->
-    <!-- footer -->
-    <footer>
+        <!-- testimonial -->
+        <!-- footer -->
+        <footer>
 			<div class="footer-wrapper section-padding">
 				<div class="container">
 					<div class="row">
@@ -210,10 +216,9 @@
 			</div>
 			<!-- /.creditwrapper --> 
 		</footer>
-    <!-- /Footer -->
-
-<!-- MENU -->
-		<nav id="menu">
+        <!-- /Footer -->
+        <!-- MENU -->
+        <nav id="menu">
 		<ul>
 		  <li><a href="http://infobyd.com/">home</a></li>
 		  <li><a href="http://infobyd.com/#about">about us</a></li>
@@ -232,32 +237,31 @@
 		  <li><a href="http://infobyd.com/#contact">contact</a></li>
 		</ul>
 		</nav>
-  		<!-- /#menu --> 
-  	</div>
-	<!-- /.main --> 
-
-    <!-- jQuery JS -->
-    <script data-cfasync="false" src="css-js/js/jquery-1.11.1.js"></script>
-    <!-- Modernizr JS -->
-    <script data-cfasync="false" src="css-js/js/modernizr-2.6.2.min.js"></script>
-    <!-- REVOLUTION Slider  -->
-    <script data-cfasync="false" type="text/javascript" src="css-js/vendor/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
-    <script data-cfasync="false" type="text/javascript" src="css-js/vendor/rs-plugin/js/jquery.themepunch.revolution.js"></script>
-    <!-- Shuffle JS -->
-    <script data-cfasync="false" src="css-js/js/jquery.shuffle.min.js"></script>
-    <!-- mmenu -->
-    <script data-cfasync="false" type="text/javascript" src="css-js/vendor/mmenu/js/jquery.mmenu.min.js"></script>
-    <!-- Owl Carosel -->
-    <script data-cfasync="false" src="css-js/vendor/owl/js/owl.carousel.min.js"></script>
-    <script data-cfasync="false" src="css-js/js/wow.min.js"></script>
-    <!-- waypoints JS-->
-    <script data-cfasync="false" src="css-js/js/waypoints.min.js"></script>
-    <!-- Counterup JS -->
-    <script data-cfasync="false" src="css-js/js/jquery.counterup.min.js"></script>
-    <!-- Custom Script JS -->
-    <script data-cfasync="false" src="css-js/js/script.js"></script>
-    <!-- Email JS -->
-    <script data-cfasync="false" src="css-js/js/email.js"></script>
-    <script type="text/javascript" src="css-js/js/formslider.js"></script>
-</body>
+        <!-- /#menu -->
+        </div>
+        <!-- /.main -->
+        <!-- jQuery JS -->
+        <script data-cfasync="false" src="css-js/js/jquery-1.11.1.js"></script>
+        <!-- Modernizr JS -->
+        <script data-cfasync="false" src="css-js/js/modernizr-2.6.2.min.js"></script>
+        <!-- REVOLUTION Slider  -->
+        <script data-cfasync="false" type="text/javascript" src="css-js/vendor/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+        <script data-cfasync="false" type="text/javascript" src="css-js/vendor/rs-plugin/js/jquery.themepunch.revolution.js"></script>
+        <!-- Shuffle JS -->
+        <script data-cfasync="false" src="css-js/js/jquery.shuffle.min.js"></script>
+        <!-- mmenu -->
+        <script data-cfasync="false" type="text/javascript" src="css-js/vendor/mmenu/js/jquery.mmenu.min.js"></script>
+        <!-- Owl Carosel -->
+        <script data-cfasync="false" src="css-js/vendor/owl/js/owl.carousel.min.js"></script>
+        <script data-cfasync="false" src="css-js/js/wow.min.js"></script>
+        <!-- waypoints JS-->
+        <script data-cfasync="false" src="css-js/js/waypoints.min.js"></script>
+        <!-- Counterup JS -->
+        <script data-cfasync="false" src="css-js/js/jquery.counterup.min.js"></script>
+        <!-- Custom Script JS -->
+        <script data-cfasync="false" src="css-js/js/script.js"></script>
+        <!-- Email JS -->
+        <script data-cfasync="false" src="css-js/js/email.js"></script>
+        <script type="text/javascript" src="css-js/js/formslider.js"></script>
+    </body>
 </html>

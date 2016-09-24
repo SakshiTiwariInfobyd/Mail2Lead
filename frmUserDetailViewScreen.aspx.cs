@@ -12,20 +12,18 @@ namespace AdminTool
 {
     public partial class frmUserDetailViewScreen : System.Web.UI.Page
     {
+
         static DataBaseProvider dataBaseProvider = new DataBaseProvider();
         static int UserType;
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Session["LoggedInuserId"] = 1;
-            //Session["ViewUserId"] = 5;
-            //Session["ViewUserSubjectId"] = 12;
-          //  lblUserName.Text = Session["username"].ToString;
-           // ButtonGoBack.Visible = true;
-           
             if (!IsPostBack)
             {
+
                 try
                 {
+                    //Session["LoggedInuserId"] = 1;
+                    //Session["ViewUserId"] = 0;
                     int LoggedInuserId, UserId;
                     LoggedInuserId = Convert.ToInt32(Session["LoggedInuserId"]);
                     UserId = Convert.ToInt32(Session["ViewUserId"]);
@@ -65,11 +63,12 @@ namespace AdminTool
             }
             else
             {
-                tbFirstName.Text = "";
-                tbLastName.Text = "";
-                tbEmail.Text = "";
-                tbConfigurationToken.Text = "";
-                
+                tbFirstName.Text = string.Empty;
+                tbLastName.Text = string.Empty;
+                tbEmail.Text = string.Empty;
+                tbPassword.Text = string.Empty;
+                tbConfigurationToken.Text = string.Empty;
+
                 EnableDisable(true);
 
             }
@@ -103,14 +102,7 @@ namespace AdminTool
             chkIsApproved.Enabled = isEnable;
             AddNewUser.Visible = isEnable;
             UpdateDiv.Visible = !isEnable;
-            if (UserType < 2)
-            {
-                ButtonGoBack.Visible = false;
-            }
-            else
-            {
-                ButtonGoBack.Visible = true;
-            }
+
         }
 
         protected void btnCancel_Click(object sender, EventArgs e)
@@ -128,13 +120,13 @@ namespace AdminTool
             Response.Redirect("~/frmUserMailToLead.aspx");
         }
 
-        protected void ButtonGoBack_Click(object sender, EventArgs e)
-        {
-            if (UserType > 1)
-            {
-                Response.Redirect("~/frmUserList.aspx");
-            }
-        }
+        //protected void ButtonGoBack_Click(object sender, EventArgs e)
+        //{
+        //    if (UserType > 1)
+        //    {
+        //        Response.Redirect("~/frmUserList.aspx");
+        //    }
+        //}
 
 
         protected void ImgTestApi_Click(object sender, EventArgs e)
@@ -142,7 +134,8 @@ namespace AdminTool
             int ViewUserId = Convert.ToInt32(Session["ViewUserId"]);
             if (ViewUserId > 0)
             {
-                MainTimeTicker.SendEmailStarted(ViewUserId);
+               // MainTimeTicker.SendEmailStarted(ViewUserId);
+               temp_mail_check.SendEmailStarted(ViewUserId);
             }
             else
             {
@@ -225,6 +218,19 @@ namespace AdminTool
         protected void ImgViewUserReport_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/frmUserMailReport.aspx");
+        }
+
+        protected void ImageGoBack1_Click(object sender, ImageClickEventArgs e)
+        {
+            int ViewUserId = Convert.ToInt32(Session["ViewUserId"]);
+            if (ViewUserId > 0)
+            {
+                Response.Redirect("~/frmApiReport.aspx");
+            }
+            else
+            {
+                Response.Redirect("~/frmUserList.aspx");
+            }
         }
     }
 }

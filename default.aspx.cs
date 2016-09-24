@@ -13,7 +13,7 @@ namespace AdminTool
         DataBaseProvider databaseProvider = new DataBaseProvider();
         protected void Page_Load(object sender, EventArgs e)
         {
-        
+
             if (!Page.IsPostBack)
             {
                 EnableViewState = true;
@@ -22,7 +22,7 @@ namespace AdminTool
 
         protected void LoginButton_Click(object sender, EventArgs e)
         {
-            
+
             if (IsValid)
             {
                 String EmailId = string.Empty, PasswordText = string.Empty;
@@ -30,9 +30,9 @@ namespace AdminTool
                 UserId = Convert.ToInt32(Session["LoggedInuserId"]);
                 if (UserId > 0)
                 {
-                   Response.Redirect("~/frmCategory.aspx");
+                    Response.Redirect("~/frmCategory.aspx");
                 }
-           
+
                 {
                     EmailId = UserName.Text;
                     PasswordText = Password.Text;
@@ -41,12 +41,13 @@ namespace AdminTool
                     if (UserId > 0)
                     {
                         Session["LoggedInuserId"] = UserId;
-                       Response.Redirect("~/frmCategory.aspx");
+                        Session["ViewUserId"] = UserId;
+                        Response.Redirect("~/frmCategory.aspx");
                     }
                     else
                     {
-                      /*  FailureText.Text = "Invalid username or password.";
-                        ErrorMessage.Visible = true;*/
+                        /*  FailureText.Text = "Invalid username or password.";
+                          ErrorMessage.Visible = true;*/
                     }
                 }
             }

@@ -45,6 +45,7 @@ namespace AdminTool.Model
                         dtProcessed = databaseProvider.GetLastProcessedTime(UserId);
                         StringBuilder oSB = new StringBuilder();
                         //Check Every Mail
+                        dtProcessed = DateTime.Now.AddDays(-1);
                         IEnumerable<MailMessage> mailMessages = mailHelper.getMsgSentAfter(dtProcessed);
                         mailHelper.disconnect();
 
@@ -52,7 +53,7 @@ namespace AdminTool.Model
                         {
                             try
                             {
-                                dtEmailTime = DateTime.Now;
+                                dtEmailTime = DateTime.Now.AddDays(-1);
                                 string sMailContent = mailMessage.Body;
 
                                 sMailContent = mailMessage.Subject + " " + sMailContent;
@@ -63,9 +64,8 @@ namespace AdminTool.Model
                                 else
                                     dtEmailTime = DateTime.Now;
 
-                                
-                                dtLastProcessed = dtEmailTime;
 
+                                dtLastProcessed = dtEmailTime;
                                 sMailContent = HelperClass.StripHTML(sMailContent);  //remove html tags form content
                                 DataTable ListOfAllSubject = databaseProvider.getListOfAllUserSubject(UserId);
 
@@ -110,13 +110,47 @@ namespace AdminTool.Model
                                                         string ValueForColumnHeader = Temp1[0];
                                                         if (ValueForColumnHeader.Trim().Length > 0)
                                                         {
-                                                            string result = databaseProvider.InsertMailSplitInfoFromBody(DataBaseMailId, ValueForColumnHeader, contentSplitId);
+                                                            string result = string.Empty;
+                                                            if (Convert.ToInt32(UserMailToLeadColumnHeader.Rows[LeadRowNo]["IsValueSplit"].ToString()) > 0)
+                                                            {
+                                                                Temp1 = null;
+                                                                if (UserMailToLeadColumnHeader.Rows[LeadRowNo]["splitType"].ToString().Trim().ToLower() == "space")
+                                                                {
+                                                                    Temp1 = ValueForColumnHeader.Split(' ');
+                                                                }
+                                                                else if (UserMailToLeadColumnHeader.Rows[LeadRowNo]["splitType"].ToString().Trim().ToLower() == "newline")
+                                                                {
+                                                                    Temp1 = ValueForColumnHeader.Split(new string[] { "\r\n" }, StringSplitOptions.None);
+                                                                }
+                                                                else
+                                                                {
+                                                                    string text = UserMailToLeadColumnHeader.Rows[LeadRowNo]["splitValueText"].ToString().Trim().ToLower();
+                                                                    Temp1 = ValueForColumnHeader.Split(new string[] { text }, StringSplitOptions.None);
+                                                                }
+                                                                if (Temp1.Length > 1)
+                                                                {
+                                                                    if (Convert.ToInt32(UserMailToLeadColumnHeader.Rows[LeadRowNo]["splitType"].ToString()) > 0)
+                                                                    {
+                                                                        ValueForColumnHeader = Temp1[1].ToString();
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        ValueForColumnHeader = Temp1[0].ToString();
+                                                                    }
+                                                                }
+
+                                                            }
+                                                            
+                                                            result = databaseProvider.InsertMailSplitInfoFromBody(DataBaseMailId, ValueForColumnHeader, contentSplitId);
                                                             if (result.ToLower() != "success")
                                                             {
                                                                 // mailSplitStatus = false;
                                                             }
                                                         }
-                                                    }
+                                
+                                                    
+                                                    
+                                                   }
                                                 }
                                             }
                                         }

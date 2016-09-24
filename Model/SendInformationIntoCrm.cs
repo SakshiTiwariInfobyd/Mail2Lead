@@ -25,7 +25,7 @@ namespace AdminTool.Model
 
                 Email = UserInfo.Rows[0]["EmailId"].ToString();
                 token = UserInfo.Rows[0]["configurationAuthToken"].ToString();
-                APILimit = Convert.ToInt32(UserInfo.Rows[0]["apiLimit"].ToString());
+                APILimit = Convert.ToInt32(UserInfo.Rows[0]["APICallCount"].ToString());
 
                 DataTable DTLeadsInfo = databaseProvider.getAllUnProcessedMailToPutIntoCrm(UserId);
                 string sTmpDataStr = string.Empty;
@@ -62,8 +62,10 @@ namespace AdminTool.Model
 
                     //Insert Record in CRM and Update Log
                     string sRes = ZohoCRMAPI.APIMethod(token, sTmpDataStr);
+
+
                     if (!string.IsNullOrEmpty(sRes))
-                    {
+                     {
                         if (sRes.IndexOf("added successfully") > 0)
                         {
                             try
@@ -77,15 +79,18 @@ namespace AdminTool.Model
                                 dt = ds.Tables["FL"];
                                 record_id = dt.Rows[0][1].ToString();
                                 record_time = dt.Rows[1][1].ToString();
-                            //    databaseProvider.InsertSubmitedMailCRMInfo(MailId, record_time, record_id);
+                               databaseProvider.InsertSubmitedMailCRMInfo(MailId, record_time, record_id);
                             }
                             catch (Exception ep)
-                            { }
+                            { 
+                            }
                             databaseProvider.updateMailContentSubmitToCrmStatus(MailId);
                             System.Threading.Thread.Sleep(30);
                         }
                         else
                         {
+                            databaseProvider.updateMailContentSubmitToCrmStatusWithError(MailId, sRes);
+                            System.Threading.Thread.Sleep(30);
                             databaseProvider.logApplicationError(MailId + "__" + sRes, "Information");
                         }
                     }

@@ -72,7 +72,6 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
-  
     <Reference Include="System.Net" />
     <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -91,6 +90,12 @@
     <Content Include="About.aspx" />
     <Content Include="bin\Ionic.Zip.dll" />
     <Content Include="bin\MSCaptcha.dll" />
+    <Content Include="Checkout\CheckoutCancel.aspx" />
+    <Content Include="Checkout\CheckoutComplete.aspx" />
+    <Content Include="Checkout\CheckoutError.aspx" />
+    <Content Include="Checkout\CheckoutReview.aspx" />
+    <Content Include="Checkout\CheckoutStart.aspx" />
+    <Content Include="Checkout\Images\buslogo.png" />
     <Content Include="Contact.aspx" />
     <Content Include="css-js\css\animate.css" />
     <Content Include="css-js\css\custom.css" />
@@ -177,10 +182,13 @@
     <Content Include="favicon.ico" />
     <Content Include="frmApiReport.aspx" />
     <Content Include="frmCategory.aspx" />
+    <Content Include="frmCreateSMS.aspx" />
+    <Content Include="frmError.aspx" />
     <Content Include="frmMailContentSplitInfo.aspx" />
     <Content Include="frmManageITest.aspx" />
-    <Content Include="frmRequestForDemo.aspx" />
+    <Content Include="frmPayment.aspx" />
     <Content Include="frmUserDetailViewScreen.aspx" />
+    <Content Include="frmUserDetailViewScreenSMS.aspx" />
     <Content Include="frmUserList.aspx" />
     <Content Include="frmUserMailReport.aspx" />
     <Content Include="frmUserMailToLead.aspx" />
@@ -191,6 +199,7 @@
     <Content Include="Images\cancel_new.png" />
     <Content Include="Images\delete.png" />
     <Content Include="Images\edit.png" />
+    <Content Include="Images\Essentials_Icon_Set_V2.1_Expanded_Profile-128.png" />
     <Content Include="Images\exporttocsv.png" />
     <Content Include="Images\exporttopdf.png" />
     <Content Include="Images\exporttoxls.png" />
@@ -322,6 +331,41 @@
     <Compile Include="About.aspx.designer.cs">
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Checkout\CheckoutCancel.aspx.cs">
+      <DependentUpon>CheckoutCancel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Checkout\CheckoutCancel.aspx.designer.cs">
+      <DependentUpon>CheckoutCancel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Checkout\CheckoutComplete.aspx.cs">
+      <DependentUpon>CheckoutComplete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Checkout\CheckoutComplete.aspx.designer.cs">
+      <DependentUpon>CheckoutComplete.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Checkout\CheckoutError.aspx.cs">
+      <DependentUpon>CheckoutError.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Checkout\CheckoutError.aspx.designer.cs">
+      <DependentUpon>CheckoutError.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Checkout\CheckoutReview.aspx.cs">
+      <DependentUpon>CheckoutReview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Checkout\CheckoutReview.aspx.designer.cs">
+      <DependentUpon>CheckoutReview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Checkout\CheckoutStart.aspx.cs">
+      <DependentUpon>CheckoutStart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Checkout\CheckoutStart.aspx.designer.cs">
+      <DependentUpon>CheckoutStart.aspx</DependentUpon>
+    </Compile>
     <Compile Include="frmApiReport.aspx.cs">
       <DependentUpon>frmApiReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -329,6 +373,36 @@
     <Compile Include="frmApiReport.aspx.designer.cs">
       <DependentUpon>frmApiReport.aspx</DependentUpon>
     </Compile>
+    <Compile Include="frmCreateSMS.aspx.cs">
+      <DependentUpon>frmCreateSMS.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmCreateSMS.aspx.designer.cs">
+      <DependentUpon>frmCreateSMS.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmError.aspx.cs">
+      <DependentUpon>frmError.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmError.aspx.designer.cs">
+      <DependentUpon>frmError.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmPayment.aspx.cs">
+      <DependentUpon>frmPayment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmPayment.aspx.designer.cs">
+      <DependentUpon>frmPayment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserDetailViewScreenSMS.aspx.cs">
+      <DependentUpon>frmUserDetailViewScreenSMS.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmUserDetailViewScreenSMS.aspx.designer.cs">
+      <DependentUpon>frmUserDetailViewScreenSMS.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\temp_mail_check.cs" />
+    <Compile Include="PayPalFunctions.cs" />
     <Compile Include="SMSService\Action.cs" />
     <Compile Include="SMSService\RingCentral.cs" />
     <Compile Include="SMSService\Zoho.cs" />
@@ -371,13 +445,6 @@
     </Compile>
     <Compile Include="frmManageITest.aspx.designer.cs">
       <DependentUpon>frmManageITest.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="frmRequestForDemo.aspx.cs">
-      <DependentUpon>frmRequestForDemo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="frmRequestForDemo.aspx.designer.cs">
-      <DependentUpon>frmRequestForDemo.aspx</DependentUpon>
     </Compile>
     <Compile Include="frmUserDetailViewScreen.aspx.cs">
       <DependentUpon>frmUserDetailViewScreen.aspx</DependentUpon>
@@ -466,7 +533,6 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
-
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

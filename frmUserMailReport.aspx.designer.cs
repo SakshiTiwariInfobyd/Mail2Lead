@@ -13,6 +13,15 @@ namespace AdminTool {
     public partial class frmUserMailReport {
         
         /// <summary>
+        /// ImageGoBack5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ImageGoBack5;
+        
+        /// <summary>
         /// lblHeader control.
         /// </summary>
         /// <remarks>

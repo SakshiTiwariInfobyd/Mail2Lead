@@ -27,8 +27,7 @@ time, mark, audio, video, p {
     padding: 0;
     vertical-align  : baseline;
     font-weight     : normal;
-    height: auto;
-}
+    }
 
 * {
     margin      :0;

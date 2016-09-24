@@ -13,6 +13,15 @@ namespace AdminTool {
     public partial class frmApiReport {
         
         /// <summary>
+        /// ImageGoBack2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ImageGoBack2;
+        
+        /// <summary>
         /// lblHeader control.
         /// </summary>
         /// <remarks>
@@ -40,40 +49,40 @@ namespace AdminTool {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivExport;
         
         /// <summary>
-        /// UpdateUser control.
+        /// ImgUpdateInfoNewUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button UpdateUser;
+        protected global::System.Web.UI.WebControls.Button ImgUpdateInfoNewUser;
         
         /// <summary>
-        /// ViewReport control.
+        /// ImgReport control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ViewReport;
+        protected global::System.Web.UI.WebControls.Button ImgReport;
         
         /// <summary>
-        /// ApiDetails control.
+        /// GroupDetails control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl ApiDetails;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl GroupDetails;
         
         /// <summary>
-        /// GridView1 control.
+        /// GridUserApiDetails control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.GridView GridUserApiDetails;
         
         /// <summary>
         /// emptyListMsg control.

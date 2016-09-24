@@ -11,10 +11,28 @@ namespace AdminTool
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           if (string.IsNullOrEmpty(Session["UserName"].ToString()))
+            if (!IsPostBack)
             {
-                lblUserName.Text = Session["UserName"].ToString();
+                try
+                {
+                    if (string.IsNullOrEmpty(Session["UserName"].ToString()))
+                    {
+                        lblUserName.Text = Session["UserName"].ToString();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    lblUserName.Text = "Hello";
+                }
             }
+        }
+
+
+        protected void linkLogout_Click(object sender, EventArgs e)
+        {
+            Session["LoggedInuserId"] = 0;
+            Session["ViewUserId"] = 0;
+            Response.Redirect("~/default.aspx");
         }
     }
 }

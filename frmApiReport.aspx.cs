@@ -12,35 +12,32 @@ namespace AdminTool
 {
     public partial class frmApiReport : System.Web.UI.Page
     {
-        static  DataBaseProvider dataBaseProvider = new DataBaseProvider();
+        static DataBaseProvider dataBaseProvider = new DataBaseProvider();
+
         protected void Page_Load(object sender, EventArgs e)
-    {
-             if (!IsPostBack)
+        {
+            if (!IsPostBack)
             {
                 try
                 {
-                    int LoggedInuserId;
+                    int LoggedInuserId, userId;
                     LoggedInuserId = Convert.ToInt32(Session["LoggedInuserId"]);
+                    userId = Convert.ToInt32(Session["ViewUserId"]);
+                    if (userId < 0)
+                    {
+                        userId = LoggedInuserId;
+                    }
                     if (LoggedInuserId < 1)
-                    { 
-                        Response.Redirect("~/default.aspx"); 
-                    
+                    {
+                        Response.Redirect("~/default.aspx");
+
                     }
                     else
                     {
-                        GetApiStatus(LoggedInuserId);
-                        
+                        GetApiStatus(userId);
+
                     }
                     ((Label)(Master).FindControl("lblUserName")).Text = Session["UserName"].ToString();
-
-
-            //LoggedInuserId = Convert.ToInt32(Session["LoggedInuserId"]);
-            //DataTable dt = new DataTable();
-            //dt = dataBaseProvider.getApiStatusReport(LoggedInuserId);
-            //ViewState["DefaultApiReportDataTable"] = dt;
-            //        GridView1.DataSource = dt;
-            //        GridView1.DataBind();
-
                 }
                 catch (Exception exc)
                 {
@@ -48,52 +45,60 @@ namespace AdminTool
                 }
             }
 
-    }
+        }
 
         public void GetApiStatus(int UserId)
         {
-            //DataTable dt = new DataTable();
-            //dt = dataBaseProvider.getApiStatusReport(LoggedInuserId);
-            //ViewState["DefaultApiReportDataTable"] = dt;
-            //        GridView1.DataSource = dt;
-            //        GridView1.DataBind();
+            DataTable dt = new DataTable();
+            dt = dataBaseProvider.getApiStatusReport(UserId);
+            ViewState["DefaultApiReportDataTable"] = dt;
 
-
-
-            DataTable dt = dataBaseProvider.getApiStatusReport(UserId);
-            ViewState["DefaultDataTable"] = dt;
             if (dt.Rows.Count < 1)
             {
                 emptyListMsg.Visible = true;
-                GridView1.Visible = false;
+                GridUserApiDetails.Visible = false;
 
             }
             else
             {
                 emptyListMsg.Visible = false;
-                GridView1.Visible = true;
-                GridView1.DataSource = dt;
-                GridView1.DataBind();
+                GridUserApiDetails.Visible = true;
+                GridUserApiDetails.DataSource = dt;
+                GridUserApiDetails.DataBind();
             }
         }
 
-
-        protected void UpdateUser_Click1(object sender, EventArgs e)
+        protected void imgBtnUserpayment_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/frmUserList.aspx");
-                
+            Response.Redirect("~/frmPayment.aspx");
         }
 
-        protected void ViewReport_Click(object sender, EventArgs e)
+        protected void ImgReport_Click(object sender, EventArgs e)
         {
 
         }
-       
 
-        
+        protected void ImgUpdateInfoNewUser_Click(object sender, EventArgs e)
+        {
+            int userId = Convert.ToInt32(((HiddenField)GridUserApiDetails.Rows[0].FindControl("hiddenUserId")).Value.Trim());
+            Session["ViewUserId"] = userId;
+            Response.Redirect("~/frmUserDetailViewScreen.aspx");
+        }
+
+        protected void ImageGoBack2_Click(object sender, ImageClickEventArgs e)
+        {
+
+
+            int UserType = Convert.ToInt32(Session["UserType"].ToString());
+            if (UserType == 1)
+            {
+                Response.Redirect("~/frmCategory.aspx");
+            }
+            else
+            {
+                Response.Redirect("~/frmUserList.aspx");
+            }
+
+        }
     }
-
-
-        }
-
-        
+}

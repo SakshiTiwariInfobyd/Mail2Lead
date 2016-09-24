@@ -13,15 +13,6 @@ namespace AdminTool {
     public partial class frmMailContentSplitInfo {
         
         /// <summary>
-        /// lblHeader control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblHeader;
-        
-        /// <summary>
         /// ImageGoBack control.
         /// </summary>
         /// <remarks>
@@ -29,6 +20,15 @@ namespace AdminTool {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ImageGoBack;
+        
+        /// <summary>
+        /// lblHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblHeader;
         
         /// <summary>
         /// Panel1 control.
@@ -121,13 +121,13 @@ namespace AdminTool {
         protected global::System.Web.UI.WebControls.Button ImgExportToPDF;
         
         /// <summary>
-        /// AddNewSplitInfo control.
+        /// PnlAddNewSplitInfo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel AddNewSplitInfo;
+        protected global::System.Web.UI.WebControls.Panel PnlAddNewSplitInfo;
         
         /// <summary>
         /// MailToLeadColumnHeader control.
@@ -182,6 +182,69 @@ namespace AdminTool {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField HiddenField1;
+        
+        /// <summary>
+        /// PnlisValueSplitInfo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PnlisValueSplitInfo;
+        
+        /// <summary>
+        /// lblIsValueSplit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblIsValueSplit;
+        
+        /// <summary>
+        /// chkisValueSplit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkisValueSplit;
+        
+        /// <summary>
+        /// dropdownIsValueSplit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dropdownIsValueSplit;
+        
+        /// <summary>
+        /// txtValueToSplit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtValueToSplit;
+        
+        /// <summary>
+        /// lblIndex control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblIndex;
+        
+        /// <summary>
+        /// dropdownValueIndex control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dropdownValueIndex;
         
         /// <summary>
         /// GroupDetails control.

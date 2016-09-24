@@ -26,6 +26,7 @@ namespace AdminTool
                         if (UserInfo.Rows.Count > 0)
                         {
                             UserType = Convert.ToInt32(UserInfo.Rows[0]["type"].ToString());
+                            Session["UserType"] = UserType;
                             Session["UserName"] = UserInfo.Rows[0]["firstName"].ToString();
                         }
                         else
@@ -38,7 +39,7 @@ namespace AdminTool
                         Response.Redirect("~/default.aspx");
                     }
                     ((Label)(Master).FindControl("lblUserName")).Text = Session["UserName"].ToString();
-
+                    
                 }
                 catch (Exception ex)
                 { }
@@ -71,10 +72,11 @@ namespace AdminTool
                 Session["CategoryType"] = 2;
                 if (UserType < 2)
                 {
-
+                    Response.Redirect("~/frmUserDetailViewScreenSMS.aspx");
                 }
                 else
                 {
+                    //Response.Redirect("~/frmUserDetailViewScreenSMS.aspx");
                     Response.Redirect("~/frmUserList.aspx");
                 }
             }
